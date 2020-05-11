@@ -21,9 +21,11 @@ tenantId: | tenant:
 
 Now, create a new service principal.   You will have to provide a new service principal name and and supply a new password:
 
-| az ad sp create-for-rbac --name MeetupDemo --password Meetup123!
+| az ad sp create-for-rbac --name MeetupDemo
 
-This will produce an "App Registration" entry under the Active Directory section of your Azure console.   It creates a service principal, and the json object returns two more items you need for your authentication file (secrets.yml) in these playbooks.
+**NOTE** Per Microsoft, Azure CLI as of version 2.0.68 has deprecated the --password parameter to prevent the use of weak passwords.  See [Azure Service-Principle-Latest](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest "Azure Service-Principle-Latest")
+
+This will produce an "App Registration" entry under the Active Directory section of your Azure console.   It creates a service principal, and the json object returns two more items you need for your authentication file (secrets.yml) in these playbooks.  The password will be randomly generated for you by Azure.
 
 Microsoft Returned Value | Value used in credentials file
 -------------------------| ------------------------------
